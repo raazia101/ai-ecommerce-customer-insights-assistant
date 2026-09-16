@@ -1,0 +1,66 @@
+timestamp,check,dataset,status
+2026-09-16T10:11:39.714207,schema,customers,PASS
+2026-09-16T10:11:39.759333,completeness,customers,PASS
+2026-09-16T10:11:39.772483,uniqueness,customers,PASS
+2026-09-16T10:11:39.776461,range_price,products,PASS
+2026-09-16T10:11:39.782848,range_stock_quantity,products,PASS
+2026-09-16T10:11:39.788168,positive_quantity,order_items,PASS
+2026-09-16T10:11:39.797738,range_unit_price,order_items,PASS
+2026-09-16T10:11:39.805458,range_amount,transactions,PASS
+2026-09-16T10:11:39.817271,referential_integrity,orders.customer_id → customers.customer_id,PASS
+2026-09-16T10:11:39.827626,referential_integrity,order_items.order_id → orders.order_id,PASS
+2026-09-16T10:11:39.835938,referential_integrity,order_items.product_id → products.product_id,PASS
+2026-09-16T10:11:39.839659,referential_integrity,transactions.customer_id → customers.customer_id,PASS
+2026-09-16T10:11:39.843701,referential_integrity,transactions.order_id → orders.order_id,PASS
+2026-09-16T10:24:25.237488,schema,customers,PASS
+2026-09-16T10:24:25.251628,completeness,customers,PASS
+2026-09-16T10:24:25.254194,uniqueness,customers,PASS
+2026-09-16T10:24:25.258750,range_price,products,PASS
+2026-09-16T10:24:25.261549,range_stock_quantity,products,PASS
+2026-09-16T10:24:25.264265,positive_quantity,order_items,PASS
+2026-09-16T10:24:25.266154,range_unit_price,order_items,PASS
+2026-09-16T10:24:25.268790,range_amount,transactions,PASS
+2026-09-16T10:24:25.275722,referential_integrity,orders.customer_id → customers.customer_id,PASS
+2026-09-16T10:24:25.280190,referential_integrity,order_items.order_id → orders.order_id,PASS
+2026-09-16T10:24:25.284683,referential_integrity,order_items.product_id → products.product_id,PASS
+2026-09-16T10:24:25.288221,referential_integrity,transactions.customer_id → customers.customer_id,PASS
+2026-09-16T10:24:25.293152,referential_integrity,transactions.order_id → orders.order_id,PASS
+2026-09-16T10:28:50.301631,schema,customers,PASS
+2026-09-16T10:28:50.311509,completeness,customers,PASS
+2026-09-16T10:28:50.314430,uniqueness,customers,PASS
+2026-09-16T10:28:50.320924,range_price,products,PASS
+2026-09-16T10:28:50.323242,range_stock_quantity,products,PASS
+2026-09-16T10:28:50.325726,positive_quantity,order_items,PASS
+2026-09-16T10:28:50.331558,range_unit_price,order_items,PASS
+2026-09-16T10:28:50.334265,range_amount,transactions,PASS
+2026-09-16T10:28:50.338792,referential_integrity,orders.customer_id -> customers.customer_id,PASS
+2026-09-16T10:28:50.345047,referential_integrity,order_items.order_id -> orders.order_id,PASS
+2026-09-16T10:28:50.349714,referential_integrity,order_items.product_id -> products.product_id,PASS
+2026-09-16T10:28:50.353730,referential_integrity,transactions.customer_id -> customers.customer_id,PASS
+2026-09-16T10:28:50.358003,referential_integrity,transactions.order_id -> orders.order_id,PASS
+2026-09-16T10:35:38.980206,schema,customers,PASS
+2026-09-16T10:35:38.989195,completeness,customers,PASS
+2026-09-16T10:35:38.994998,uniqueness,customers,PASS
+2026-09-16T10:35:38.998869,range_price,products,PASS
+2026-09-16T10:35:39.002031,range_stock_quantity,products,PASS
+2026-09-16T10:35:39.007349,positive_quantity,order_items,PASS
+2026-09-16T10:35:39.011788,range_unit_price,order_items,PASS
+2026-09-16T10:35:39.016262,range_amount,transactions,PASS
+2026-09-16T10:35:39.021555,referential_integrity,orders.customer_id -> customers.customer_id,PASS
+2026-09-16T10:35:39.030713,referential_integrity,order_items.order_id -> orders.order_id,PASS
+2026-09-16T10:35:39.037362,referential_integrity,order_items.product_id -> products.product_id,PASS
+2026-09-16T10:35:39.044802,referential_integrity,transactions.customer_id -> customers.customer_id,PASS
+2026-09-16T10:35:39.052717,referential_integrity,transactions.order_id -> orders.order_id,PASS
+2026-09-16T10:37:46.236437,schema,customers,PASS
+2026-09-16T10:37:46.241636,completeness,customers,PASS
+2026-09-16T10:37:46.246648,uniqueness,customers,PASS
+2026-09-16T10:37:46.250012,range_price,products,PASS
+2026-09-16T10:37:46.252207,range_stock_quantity,products,PASS
+2026-09-16T10:37:46.255369,positive_quantity,order_items,PASS
+2026-09-16T10:37:46.258311,range_unit_price,order_items,PASS
+2026-09-16T10:37:46.260808,range_amount,transactions,PASS
+2026-09-16T10:37:46.263966,referential_integrity,orders.customer_id -> customers.customer_id,PASS
+2026-09-16T10:37:46.270050,referential_integrity,order_items.order_id -> orders.order_id,PASS
+2026-09-16T10:37:46.276537,referential_integrity,order_items.product_id -> products.product_id,PASS
+2026-09-16T10:37:46.282722,referential_integrity,transactions.customer_id -> customers.customer_id,PASS
+2026-09-16T10:37:46.288159,referential_integrity,transactions.order_id -> orders.order_id,PASS
