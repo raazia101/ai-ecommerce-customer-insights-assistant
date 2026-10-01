@@ -1,0 +1,11 @@
+.venv
+.git
+.gitignore
+.env
+__pycache__
+*.pyc
+.ipynb_checkpoints
+.pytest_cache
+06_ml/artifacts/*.tmp
+data/raw
+data/staging

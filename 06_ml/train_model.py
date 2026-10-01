@@ -1,5 +1,5 @@
 from pathlib import Path
-
+import joblib
 import pandas as pd
 
 from sklearn.compose import ColumnTransformer
@@ -34,6 +34,17 @@ DATA_PATH = (
     / "data"
     / "curated"
     / "ml_customer_features.parquet"
+)
+
+ARTIFACT_DIR = (
+    BASE_DIR
+    / "06_ml"
+    / "artifacts"
+)
+
+MODEL_PATH = (
+    ARTIFACT_DIR
+    / "model_pipeline.joblib"
 )
 
 
@@ -290,7 +301,23 @@ pipeline.fit(
     X,
     y,
 )
+# ============================================================
+# SAVE TRAINED MODEL PIPELINE
+# ============================================================
 
+ARTIFACT_DIR.mkdir(
+    parents=True,
+    exist_ok=True,
+)
+
+joblib.dump(
+    pipeline,
+    MODEL_PATH,
+)
+
+print()
+print("Model pipeline saved to:")
+print(MODEL_PATH)
 
 # ============================================================
 # PREDICTIONS ON FULL DATASET
