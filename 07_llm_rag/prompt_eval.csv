@@ -1,0 +1,6 @@
+test_id,input,expected_segment,format_required
+1,"Customer has completed 1 order","new","json"
+2,"Customer has completed 8 orders","repeat","json"
+3,"Customer has completed 20 orders and has high spending","high_value","json"
+4,"Customer has completed 5 orders","repeat","json"
+5,"Customer has completed 0 orders","new","json"
