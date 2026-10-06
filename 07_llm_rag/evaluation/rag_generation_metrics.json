@@ -1,0 +1,106 @@
+{
+  "evaluation_type": "rag_generation",
+  "queries_evaluated": 8,
+  "source_accuracy": 1.0,
+  "citation_rate": 1.0,
+  "answer_relevance_rate": 0.875,
+  "evidence_failures": 0,
+  "results": [
+    {
+      "id": "q1",
+      "question": "How long do I have to return an item?",
+      "answer": "Eligible products can generally be returned within 30 days of delivery [1].",
+      "expected_source": "policies.md",
+      "expected_section": "Return Policy",
+      "source_correct": true,
+      "citation_present": true,
+      "answer_relevant": true,
+      "evidence_sufficient": true,
+      "context_tokens": 360
+    },
+    {
+      "id": "q2",
+      "question": "Why was my payment declined?",
+      "answer": "A payment may be declined due to incorrect payment information, insufficient funds, restrictions from the payment provider, or other processing issues [1].",
+      "expected_source": "policies.md",
+      "expected_section": "Payment Policy",
+      "source_correct": true,
+      "citation_present": true,
+      "answer_relevant": true,
+      "evidence_sufficient": true,
+      "context_tokens": 318
+    },
+    {
+      "id": "q3",
+      "question": "How can I track my order?",
+      "answer": "Customers can track their order from the Orders section of their account. Each order displays its current status and the latest available delivery information. If a tracking number is available, it is displayed in the order details. Customers can use the tracking number to follow the shipment with the delivery carrier. [1]",
+      "expected_source": "faq.md",
+      "expected_section": "Order Tracking",
+      "source_correct": true,
+      "citation_present": true,
+      "answer_relevant": true,
+      "evidence_sufficient": true,
+      "context_tokens": 354
+    },
+    {
+      "id": "q4",
+      "question": "What does out for delivery mean?",
+      "answer": "Out for delivery means that the order is with the local delivery service and is expected to arrive soon [1].",
+      "expected_source": "faq.md",
+      "expected_section": "Delivery Status",
+      "source_correct": true,
+      "citation_present": true,
+      "answer_relevant": true,
+      "evidence_sufficient": true,
+      "context_tokens": 377
+    },
+    {
+      "id": "q5",
+      "question": "How do I reset my forgotten password?",
+      "answer": "Customers can reset a forgotten password using the password reset option on the account sign-in page. A password reset link is sent to the email address associated with the account. [1]",
+      "expected_source": "faq.md",
+      "expected_section": "Account Password",
+      "source_correct": true,
+      "citation_present": true,
+      "answer_relevant": true,
+      "evidence_sufficient": true,
+      "context_tokens": 320
+    },
+    {
+      "id": "q6",
+      "question": "How long does a refund take?",
+      "answer": "The time required for a refund to appear in a customer's account depends on the payment provider or bank [1], [2].",
+      "expected_source": "policies.md",
+      "expected_section": "Refund Policy",
+      "source_correct": true,
+      "citation_present": true,
+      "answer_relevant": false,
+      "evidence_sufficient": true,
+      "context_tokens": 344
+    },
+    {
+      "id": "q7",
+      "question": "Can I cancel my order after it has shipped?",
+      "answer": "No, you cannot cancel your order after it has shipped. According to the cancellation policy [1], orders that have already progressed to the shipped status may no longer be cancellable.",
+      "expected_source": "policies.md",
+      "expected_section": "Cancellation Policy",
+      "source_correct": true,
+      "citation_present": true,
+      "answer_relevant": true,
+      "evidence_sufficient": true,
+      "context_tokens": 354
+    },
+    {
+      "id": "q8",
+      "question": "What payment methods can I use?",
+      "answer": "Supported payment methods are displayed during checkout. Customers should verify their payment details and ensure their payment method is supported. [2]",
+      "expected_source": "policies.md",
+      "expected_section": "Payment Policy",
+      "source_correct": true,
+      "citation_present": true,
+      "answer_relevant": true,
+      "evidence_sufficient": true,
+      "context_tokens": 350
+    }
+  ]
+}

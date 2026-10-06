@@ -1,0 +1,42 @@
+[
+  {
+    "query": "How long do I have to return an item?",
+    "expected_source": "policies.md",
+    "expected_section": "Return Policy"
+  },
+  {
+    "query": "Why was my payment declined?",
+    "expected_source": "policies.md",
+    "expected_section": "Payment Policy"
+  },
+  {
+    "query": "How can I track my order?",
+    "expected_source": "faq.md",
+    "expected_section": "Order Tracking"
+  },
+  {
+    "query": "What does out for delivery mean?",
+    "expected_source": "faq.md",
+    "expected_section": "Delivery Status"
+  },
+  {
+    "query": "How do I reset my forgotten password?",
+    "expected_source": "faq.md",
+    "expected_section": "Account Password"
+  },
+  {
+    "query": "How long does a refund take?",
+    "expected_source": "policies.md",
+    "expected_section": "Refund Policy"
+  },
+  {
+    "query": "Can I cancel my order after it has shipped?",
+    "expected_source": "policies.md",
+    "expected_section": "Cancellation Policy"
+  },
+  {
+    "query": "What payment methods can I use?",
+    "expected_source": "policies.md",
+    "expected_section": "Payment Policy"
+  }
+]

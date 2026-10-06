@@ -1,0 +1,20 @@
+{
+  "index_version": "week8-day2-v1",
+  "collection_name": "ecommerce_support",
+  "embedding_model": "all-MiniLM-L6-v2",
+  "embedding_dimension": 384,
+  "chunk_size": 120,
+  "chunk_overlap": 20,
+  "documents": [
+    "faq.md",
+    "policies.md"
+  ],
+  "document_count": 2,
+  "chunk_count": 14,
+  "metadata_fields": [
+    "source",
+    "section",
+    "page",
+    "chunk_index"
+  ]
+}

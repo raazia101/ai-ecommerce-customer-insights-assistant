@@ -1,0 +1,74 @@
+[
+  {
+    "id": "q1",
+    "question": "How long do I have to return an item?",
+    "expected_answer_points": [
+      "Eligible products can generally be returned within 30 days of delivery."
+    ],
+    "expected_source": "policies.md",
+    "expected_section": "Return Policy"
+  },
+  {
+    "id": "q2",
+    "question": "Why was my payment declined?",
+    "expected_answer_points": [
+      "Payment may be declined because of incorrect payment details, insufficient funds, or bank/payment-provider restrictions."
+    ],
+    "expected_source": "policies.md",
+    "expected_section": "Payment Policy"
+  },
+  {
+    "id": "q3",
+    "question": "How can I track my order?",
+    "expected_answer_points": [
+      "Customers can track an order using the tracking information provided after shipment."
+    ],
+    "expected_source": "faq.md",
+    "expected_section": "Order Tracking"
+  },
+  {
+    "id": "q4",
+    "question": "What does out for delivery mean?",
+    "expected_answer_points": [
+      "The order is with the delivery carrier and is expected to be delivered soon."
+    ],
+    "expected_source": "faq.md",
+    "expected_section": "Delivery Status"
+  },
+  {
+    "id": "q5",
+    "question": "How do I reset my forgotten password?",
+    "expected_answer_points": [
+      "Use the password reset option on the account login page and follow the instructions."
+    ],
+    "expected_source": "faq.md",
+    "expected_section": "Account Password"
+  },
+  {
+    "id": "q6",
+    "question": "How long does a refund take?",
+    "expected_answer_points": [
+      "Refunds may take several business days to appear after processing."
+    ],
+    "expected_source": "policies.md",
+    "expected_section": "Refund Policy"
+  },
+  {
+    "id": "q7",
+    "question": "Can I cancel my order after it has shipped?",
+    "expected_answer_points": [
+      "Orders generally cannot be cancelled after shipment."
+    ],
+    "expected_source": "policies.md",
+    "expected_section": "Cancellation Policy"
+  },
+  {
+    "id": "q8",
+    "question": "What payment methods can I use?",
+    "expected_answer_points": [
+      "The available payment methods are listed in the Payment Policy."
+    ],
+    "expected_source": "policies.md",
+    "expected_section": "Payment Policy"
+  }
+]

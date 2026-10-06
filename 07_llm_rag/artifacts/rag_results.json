@@ -1,0 +1,108 @@
+{
+  "question": "How long do I have to return an item?",
+  "model": "qwen2.5:3b",
+  "embedding_model": "all-MiniLM-L6-v2",
+  "top_k": 5,
+  "evidence_sufficient": true,
+  "context_tokens": 360,
+  "answer": "According to the Return Policy in the policies.md document, eligible products can generally be returned within 30 days of delivery.",
+  "sources": [
+    {
+      "citation": "[1]",
+      "source": "policies.md",
+      "section": "Return Policy",
+      "page": "N/A",
+      "chunk_index": 0,
+      "distance": 0.4555779993534088
+    },
+    {
+      "citation": "[2]",
+      "source": "faq.md",
+      "section": "Returns",
+      "page": "N/A",
+      "chunk_index": 0,
+      "distance": 0.5366588830947876
+    },
+    {
+      "citation": "[3]",
+      "source": "faq.md",
+      "section": "Refunds",
+      "page": "N/A",
+      "chunk_index": 0,
+      "distance": 0.7701768279075623
+    },
+    {
+      "citation": "[4]",
+      "source": "policies.md",
+      "section": "Refund Policy",
+      "page": "N/A",
+      "chunk_index": 0,
+      "distance": 1.0003814697265625
+    },
+    {
+      "citation": "[5]",
+      "source": "policies.md",
+      "section": "Cancellation Policy",
+      "page": "N/A",
+      "chunk_index": 0,
+      "distance": 1.2544443607330322
+    }
+  ],
+  "retrieved_chunks": [
+    {
+      "rank": 1,
+      "source": "policies.md",
+      "section": "Return Policy",
+      "page": "N/A",
+      "chunk_index": 0,
+      "distance": 0.4555779993534088,
+      "semantic_score": 0.687012307443652,
+      "keyword_score": 0.3333333333333333,
+      "hybrid_score": 0.5809086152105564
+    },
+    {
+      "rank": 2,
+      "source": "faq.md",
+      "section": "Returns",
+      "page": "N/A",
+      "chunk_index": 0,
+      "distance": 0.5366588830947876,
+      "semantic_score": 0.6507625153515062,
+      "keyword_score": 0.2222222222222222,
+      "hybrid_score": 0.522200427412721
+    },
+    {
+      "rank": 3,
+      "source": "faq.md",
+      "section": "Refunds",
+      "page": "N/A",
+      "chunk_index": 0,
+      "distance": 0.7701768279075623,
+      "semantic_score": 0.5649153148061768,
+      "keyword_score": 0.2222222222222222,
+      "hybrid_score": 0.4621073870309904
+    },
+    {
+      "rank": 4,
+      "source": "policies.md",
+      "section": "Refund Policy",
+      "page": "N/A",
+      "chunk_index": 0,
+      "distance": 1.0003814697265625,
+      "semantic_score": 0.49990465075478463,
+      "keyword_score": 0.2222222222222222,
+      "hybrid_score": 0.41659992219501585
+    },
+    {
+      "rank": 5,
+      "source": "policies.md",
+      "section": "Cancellation Policy",
+      "page": "N/A",
+      "chunk_index": 0,
+      "distance": 1.2544443607330322,
+      "semantic_score": 0.44356827669716814,
+      "keyword_score": 0.3333333333333333,
+      "hybrid_score": 0.41049779368801764
+    }
+  ]
+}

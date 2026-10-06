@@ -1,0 +1,66 @@
+{
+  "evaluation_type": "semantic_retrieval",
+  "top_k": 5,
+  "total_queries": 8,
+  "hits": 8,
+  "hit_rate_at_k": 1.0,
+  "mean_reciprocal_rank": 0.8125,
+  "results": [
+    {
+      "query": "How long do I have to return an item?",
+      "expected_source": "policies.md",
+      "expected_section": "Return Policy",
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "query": "Why was my payment declined?",
+      "expected_source": "policies.md",
+      "expected_section": "Payment Policy",
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "query": "How can I track my order?",
+      "expected_source": "faq.md",
+      "expected_section": "Order Tracking",
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "query": "What does out for delivery mean?",
+      "expected_source": "faq.md",
+      "expected_section": "Delivery Status",
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "query": "How do I reset my forgotten password?",
+      "expected_source": "faq.md",
+      "expected_section": "Account Password",
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "query": "How long does a refund take?",
+      "expected_source": "policies.md",
+      "expected_section": "Refund Policy",
+      "hit": true,
+      "hit_rank": 2
+    },
+    {
+      "query": "Can I cancel my order after it has shipped?",
+      "expected_source": "policies.md",
+      "expected_section": "Cancellation Policy",
+      "hit": true,
+      "hit_rank": 2
+    },
+    {
+      "query": "What payment methods can I use?",
+      "expected_source": "policies.md",
+      "expected_section": "Payment Policy",
+      "hit": true,
+      "hit_rank": 2
+    }
+  ]
+}

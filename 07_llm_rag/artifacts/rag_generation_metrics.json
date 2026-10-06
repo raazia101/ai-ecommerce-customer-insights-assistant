@@ -1,0 +1,498 @@
+{
+  "evaluation": "rag_generation",
+  "model": "qwen2.5:3b",
+  "embedding_model": "all-MiniLM-L6-v2",
+  "top_k": 5,
+  "summary": {
+    "queries": 8,
+    "source_accuracy": 1.0,
+    "citation_rate": 1.0,
+    "answer_relevance_rate": 0.75,
+    "faithfulness_rate": 1.0,
+    "evidence_failure_rate": 0.0,
+    "mean_source_rank": 1.25,
+    "source_mrr": 0.875
+  },
+  "results": [
+    {
+      "question_id": "q1",
+      "question": "How long do I have to return an item?",
+      "expected_source": "policies.md",
+      "expected_section": "Return Policy",
+      "expected_answer_points": [
+        "Eligible products can generally be returned within 30 days of delivery."
+      ],
+      "answer": "Eligible products can generally be returned within 30 days of delivery. [1]",
+      "evidence_sufficient": true,
+      "context_tokens": 360,
+      "source_correct": true,
+      "expected_source_rank": 1,
+      "citation_present": true,
+      "answer_relevant": true,
+      "faithful": true,
+      "evidence_failure": false,
+      "sources": [
+        {
+          "citation": "[1]",
+          "source": "policies.md",
+          "section": "Return Policy",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 0.4555779993534088
+        },
+        {
+          "citation": "[2]",
+          "source": "faq.md",
+          "section": "Returns",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 0.5366588830947876
+        },
+        {
+          "citation": "[3]",
+          "source": "faq.md",
+          "section": "Refunds",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 0.7701768279075623
+        },
+        {
+          "citation": "[4]",
+          "source": "policies.md",
+          "section": "Refund Policy",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 1.0003814697265625
+        },
+        {
+          "citation": "[5]",
+          "source": "policies.md",
+          "section": "Cancellation Policy",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 1.2544443607330322
+        }
+      ]
+    },
+    {
+      "question_id": "q2",
+      "question": "Why was my payment declined?",
+      "expected_source": "policies.md",
+      "expected_section": "Payment Policy",
+      "expected_answer_points": [
+        "Payment may be declined because of incorrect payment details, insufficient funds, or bank/payment-provider restrictions."
+      ],
+      "answer": "A payment may be declined due to incorrect payment information, insufficient funds, restrictions from the payment provider, or other processing issues. [1]",
+      "evidence_sufficient": true,
+      "context_tokens": 318,
+      "source_correct": true,
+      "expected_source_rank": 1,
+      "citation_present": true,
+      "answer_relevant": true,
+      "faithful": true,
+      "evidence_failure": false,
+      "sources": [
+        {
+          "citation": "[1]",
+          "source": "policies.md",
+          "section": "Payment Policy",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 0.9652419686317444
+        },
+        {
+          "citation": "[2]",
+          "source": "faq.md",
+          "section": "Payment Problems",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 1.246874451637268
+        },
+        {
+          "citation": "[3]",
+          "source": "faq.md",
+          "section": "Refunds",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 1.4450747966766357
+        },
+        {
+          "citation": "[4]",
+          "source": "policies.md",
+          "section": "Refund Policy",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 1.5335896015167236
+        },
+        {
+          "citation": "[5]",
+          "source": "faq.md",
+          "section": "Customer Support",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 1.4524234533309937
+        }
+      ]
+    },
+    {
+      "question_id": "q3",
+      "question": "How can I track my order?",
+      "expected_source": "faq.md",
+      "expected_section": "Order Tracking",
+      "expected_answer_points": [
+        "Customers can track an order using the tracking information provided after shipment."
+      ],
+      "answer": "To track your order, you can access the Orders section of your account. Each order will display its current status and the latest delivery information. If a tracking number is available, you can use it to follow the shipment with the delivery carrier. [1]",
+      "evidence_sufficient": true,
+      "context_tokens": 354,
+      "source_correct": true,
+      "expected_source_rank": 1,
+      "citation_present": true,
+      "answer_relevant": true,
+      "faithful": true,
+      "evidence_failure": false,
+      "sources": [
+        {
+          "citation": "[1]",
+          "source": "faq.md",
+          "section": "Order Tracking",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 0.5539003610610962
+        },
+        {
+          "citation": "[2]",
+          "source": "faq.md",
+          "section": "Customer Support",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 1.146681308746338
+        },
+        {
+          "citation": "[3]",
+          "source": "faq.md",
+          "section": "Returns",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 1.097731351852417
+        },
+        {
+          "citation": "[4]",
+          "source": "faq.md",
+          "section": "Delivery Status",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 1.145233154296875
+        },
+        {
+          "citation": "[5]",
+          "source": "policies.md",
+          "section": "Shipping Policy",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 1.2373309135437012
+        }
+      ]
+    },
+    {
+      "question_id": "q4",
+      "question": "What does out for delivery mean?",
+      "expected_source": "faq.md",
+      "expected_section": "Delivery Status",
+      "expected_answer_points": [
+        "The order is with the delivery carrier and is expected to be delivered soon."
+      ],
+      "answer": "Out for delivery means that the order has been handed over to the local delivery service and is expected to arrive soon. [1]",
+      "evidence_sufficient": true,
+      "context_tokens": 377,
+      "source_correct": true,
+      "expected_source_rank": 1,
+      "citation_present": true,
+      "answer_relevant": true,
+      "faithful": true,
+      "evidence_failure": false,
+      "sources": [
+        {
+          "citation": "[1]",
+          "source": "faq.md",
+          "section": "Delivery Status",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 0.8215182423591614
+        },
+        {
+          "citation": "[2]",
+          "source": "policies.md",
+          "section": "Return Policy",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 1.557502031326294
+        },
+        {
+          "citation": "[3]",
+          "source": "policies.md",
+          "section": "Shipping Policy",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 1.3819243907928467
+        },
+        {
+          "citation": "[4]",
+          "source": "faq.md",
+          "section": "Order Cancellation",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 1.4143375158309937
+        },
+        {
+          "citation": "[5]",
+          "source": "faq.md",
+          "section": "Order Tracking",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 1.4956378936767578
+        }
+      ]
+    },
+    {
+      "question_id": "q5",
+      "question": "How do I reset my forgotten password?",
+      "expected_source": "faq.md",
+      "expected_section": "Account Password",
+      "expected_answer_points": [
+        "Use the password reset option on the account login page and follow the instructions."
+      ],
+      "answer": "To reset your forgotten password, you can use the password reset option available on the account sign-in page. A password reset link will be sent to the email address associated with your account. [1]",
+      "evidence_sufficient": true,
+      "context_tokens": 320,
+      "source_correct": true,
+      "expected_source_rank": 1,
+      "citation_present": true,
+      "answer_relevant": true,
+      "faithful": true,
+      "evidence_failure": false,
+      "sources": [
+        {
+          "citation": "[1]",
+          "source": "faq.md",
+          "section": "Account Password",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 0.49915948510169983
+        },
+        {
+          "citation": "[2]",
+          "source": "policies.md",
+          "section": "Account Security Policy",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 1.1988506317138672
+        },
+        {
+          "citation": "[3]",
+          "source": "faq.md",
+          "section": "Customer Support",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 1.678075909614563
+        },
+        {
+          "citation": "[4]",
+          "source": "faq.md",
+          "section": "Returns",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 1.7544124126434326
+        },
+        {
+          "citation": "[5]",
+          "source": "faq.md",
+          "section": "Order Tracking",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 1.8754932880401611
+        }
+      ]
+    },
+    {
+      "question_id": "q6",
+      "question": "How long does a refund take?",
+      "expected_source": "policies.md",
+      "expected_section": "Refund Policy",
+      "expected_answer_points": [
+        "Refunds may take several business days to appear after processing."
+      ],
+      "answer": "Refunds are initiated after a returned product is received and approved, and the time required for the refund to appear in a customer's account depends on the payment provider or bank. [1], [2]",
+      "evidence_sufficient": true,
+      "context_tokens": 344,
+      "source_correct": true,
+      "expected_source_rank": 2,
+      "citation_present": true,
+      "answer_relevant": false,
+      "faithful": true,
+      "evidence_failure": false,
+      "sources": [
+        {
+          "citation": "[1]",
+          "source": "faq.md",
+          "section": "Refunds",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 0.6971790194511414
+        },
+        {
+          "citation": "[2]",
+          "source": "policies.md",
+          "section": "Refund Policy",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 0.7913943529129028
+        },
+        {
+          "citation": "[3]",
+          "source": "policies.md",
+          "section": "Return Policy",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 1.0322598218917847
+        },
+        {
+          "citation": "[4]",
+          "source": "faq.md",
+          "section": "Returns",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 1.20554518699646
+        },
+        {
+          "citation": "[5]",
+          "source": "faq.md",
+          "section": "Account Password",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 1.7843154668807983
+        }
+      ]
+    },
+    {
+      "question_id": "q7",
+      "question": "Can I cancel my order after it has shipped?",
+      "expected_source": "policies.md",
+      "expected_section": "Cancellation Policy",
+      "expected_answer_points": [
+        "Orders generally cannot be cancelled after shipment."
+      ],
+      "answer": "Based on the information provided in the policies and FAQs, orders that have already progressed to the \"shipped\" status are no longer cancellable. [1]",
+      "evidence_sufficient": true,
+      "context_tokens": 354,
+      "source_correct": true,
+      "expected_source_rank": 1,
+      "citation_present": true,
+      "answer_relevant": false,
+      "faithful": true,
+      "evidence_failure": false,
+      "sources": [
+        {
+          "citation": "[1]",
+          "source": "policies.md",
+          "section": "Cancellation Policy",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 0.6408077478408813
+        },
+        {
+          "citation": "[2]",
+          "source": "faq.md",
+          "section": "Order Cancellation",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 0.4726039171218872
+        },
+        {
+          "citation": "[3]",
+          "source": "faq.md",
+          "section": "Delivery Status",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 1.1841843128204346
+        },
+        {
+          "citation": "[4]",
+          "source": "faq.md",
+          "section": "Returns",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 1.0132272243499756
+        },
+        {
+          "citation": "[5]",
+          "source": "faq.md",
+          "section": "Order Tracking",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 1.427976369857788
+        }
+      ]
+    },
+    {
+      "question_id": "q8",
+      "question": "What payment methods can I use?",
+      "expected_source": "policies.md",
+      "expected_section": "Payment Policy",
+      "expected_answer_points": [
+        "The available payment methods are listed in the Payment Policy."
+      ],
+      "answer": "Supported payment methods are displayed during checkout. Customers can use various payment methods, including those supported by the payment provider or bank. [2]",
+      "evidence_sufficient": true,
+      "context_tokens": 350,
+      "source_correct": true,
+      "expected_source_rank": 2,
+      "citation_present": true,
+      "answer_relevant": true,
+      "faithful": true,
+      "evidence_failure": false,
+      "sources": [
+        {
+          "citation": "[1]",
+          "source": "faq.md",
+          "section": "Payment Problems",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 1.0050841569900513
+        },
+        {
+          "citation": "[2]",
+          "source": "policies.md",
+          "section": "Payment Policy",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 1.0399624109268188
+        },
+        {
+          "citation": "[3]",
+          "source": "faq.md",
+          "section": "Refunds",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 1.5041266679763794
+        },
+        {
+          "citation": "[4]",
+          "source": "faq.md",
+          "section": "Order Tracking",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 1.6350997686386108
+        },
+        {
+          "citation": "[5]",
+          "source": "policies.md",
+          "section": "Refund Policy",
+          "page": "N/A",
+          "chunk_index": 0,
+          "distance": 1.4946660995483398
+        }
+      ]
+    }
+  ]
+}
