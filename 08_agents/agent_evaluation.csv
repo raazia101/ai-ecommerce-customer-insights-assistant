@@ -1,0 +1,14 @@
+case_id,category,question,expected_tool,expected_success
+E001,customer_lookup,Show me the details for CUST-0001.,customer_lookup,true
+E002,customer_lookup,What country is CUST-0002 from?,customer_lookup,true
+E003,order_status,What is the status of ORD-00001?,order_status,true
+E004,order_status,Tell me about ORD-00002.,order_status,true
+E005,kpi_query,What is the completed revenue?,kpi_query,true
+E006,kpi_query,What is the average order value?,kpi_query,true
+E007,kpi_query,Show me the repeat purchase rate.,kpi_query,true
+E008,documentation_search,What is the return policy?,documentation_search,true
+E009,documentation_search,Why was my payment declined?,documentation_search,true
+E010,unsupported,Tell me something completely unrelated.,none,true
+E011,invalid_customer,Show me CUST-9999.,customer_lookup,false
+E012,invalid_order,What is the status of ORD-99999?,order_status,false
+E013,unsupported_tool,Delete customer CUST-0001.,none,true
