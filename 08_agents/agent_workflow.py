@@ -7,19 +7,19 @@ E-commerce Customer Insights Assistant.
 Workflow:
 
     UNDERSTAND
-        ↓
+        â†“
     SELECT_TOOL
-        ↓
+        â†“
     EXECUTE_TOOL
-        ↓
+        â†“
     EVALUATE_RESULT
-        ↓
+        â†“
     SYNTHESIZE
-        ↓
+        â†“
     VALIDATE
-        ↓
+        â†“
     RESPOND
-        ↓
+        â†“
     TERMINATE
 
 The workflow is intentionally deterministic for this baseline so
@@ -817,6 +817,26 @@ def evaluate_result(
     success = bool(
         result.get("success", False)
     )
+        # --------------------------------------------------------
+    # Valid "not found" lookup result
+    # --------------------------------------------------------
+
+    if (
+        state.selected_tool == "customer_lookup"
+        and result.get("found") is False
+    ):
+        _record_trace(
+            state,
+            {
+                "event": "tool_result_accepted",
+                "tool": state.selected_tool,
+                "reason": "customer_not_found",
+            },
+        )
+
+        state.current_state = WorkflowState.SYNTHESIZE
+        return
+
 
     # --------------------------------------------------------
     # Successful result
@@ -930,7 +950,7 @@ def synthesize_response(
             for error in state.errors
         ):
             state.final_answer = (
-                "I’m sorry, but I can’t perform that "
+                "Iâ€™m sorry, but I canâ€™t perform that "
                 "action. The available tools are read-only "
                 "and cannot modify, delete, cancel, or "
                 "refund records."
@@ -938,7 +958,7 @@ def synthesize_response(
 
         else:
             state.final_answer = (
-                "I’m sorry, but I could not safely "
+                "Iâ€™m sorry, but I could not safely "
                 "process that request."
             )
 
@@ -957,6 +977,33 @@ def synthesize_response(
     success = bool(
         result.get("success", False)
     )
+    # --------------------------------------------------------
+    # Valid "not found" customer lookup
+    # --------------------------------------------------------
+
+    if (
+        state.selected_tool == "customer_lookup"
+        and result.get("found") is False
+    ):
+        customer_id = result.get(
+            "customer_id",
+            "the requested customer",
+        )
+
+        state.final_answer = (
+            f"Customer {customer_id} was not found."
+        )
+
+        _record_trace(
+            state,
+            {
+                "event": "response_synthesized",
+                "source": "customer_lookup",
+                "reason": "customer_not_found",
+            },
+        )
+
+        return
 
     # --------------------------------------------------------
     # Failed tool
@@ -969,7 +1016,7 @@ def synthesize_response(
         )
 
         state.final_answer = (
-            "I’m sorry, but I could not complete that "
+            "Iâ€™m sorry, but I could not complete that "
             f"request safely. {error}"
         )
 
@@ -1171,7 +1218,7 @@ def validate_response(
         )
 
         state.final_answer = (
-            "I’m sorry, but I could not safely "
+            "Iâ€™m sorry, but I could not safely "
             "generate a response."
         )
 
@@ -1185,7 +1232,7 @@ def validate_response(
         )
 
         state.final_answer = (
-            "I’m sorry, but I could not safely "
+            "Iâ€™m sorry, but I could not safely "
             "generate a response."
         )
 
@@ -1213,7 +1260,7 @@ def validate_response(
             for phrase in unsafe_completion_phrases
         ):
             state.final_answer = (
-                "I’m sorry, but I can’t perform that "
+                "Iâ€™m sorry, but I canâ€™t perform that "
                 "action. The available tools are read-only."
             )
 
@@ -1308,7 +1355,7 @@ def run_agent(
                 )
 
                 state.final_answer = (
-                    "I’m sorry, but I could not safely "
+                    "Iâ€™m sorry, but I could not safely "
                     "understand that request."
                 )
 
@@ -1377,40 +1424,12 @@ def run_agent(
 
         elif (
             state.current_state
-            == WorkflowState.EVALUATE_RESULT
+            ==
+            WorkflowState.EVALUATE_RESULT
         ):
             evaluate_result(
                 state
             )
-
-            result_success = bool(
-                state.tool_result
-                and state.tool_result.get(
-                    "success",
-                    False,
-                )
-            )
-
-            # Successful tool result.
-            if result_success:
-                state.current_state = (
-                    WorkflowState.SYNTHESIZE
-                )
-
-            # Failed tool result with retries remaining.
-            elif (
-                state.tool_attempts
-                < MAX_TOOL_RETRIES
-            ):
-                state.current_state = (
-                    WorkflowState.EXECUTE_TOOL
-                )
-
-            # Failed tool result with no retries left.
-            else:
-                state.current_state = (
-                    WorkflowState.SYNTHESIZE
-                )
 
         # ----------------------------------------------------
         # SYNTHESIZE
@@ -1487,7 +1506,7 @@ def run_agent(
         )
 
         state.final_answer = (
-            "I’m sorry, but I could not complete "
+            "Iâ€™m sorry, but I could not complete "
             "the request within the allowed workflow "
             "step limit."
         )
