@@ -1,0 +1,20 @@
+FROM python:3.13-slim
+
+WORKDIR /app
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+COPY requirements-capstone.txt .
+
+RUN pip install --no-cache-dir -r requirements-capstone.txt
+
+COPY 09_capstone ./09_capstone
+COPY 08_agents ./08_agents
+COPY 07_llm_rag ./07_llm_rag
+COPY 05_analytics ./05_analytics
+COPY data ./data
+
+EXPOSE 8000
+
+CMD ["uvicorn", "09_capstone.api.main:app", "--host", "0.0.0.0", "--port", "8000"]

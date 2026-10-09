@@ -9,3 +9,19 @@ __pycache__/
 *.log
 data/raw/*
 !data/raw/.gitkeep
+# Environment / secrets
+.env
+.env.*
+*.key
+04_data_eng/key.txt
+
+# Generated ML / RAG artifacts
+07_llm_rag/artifacts/vector_store/
+
+# Local Python / notebook files
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.pytest_cache/
+.coverage
+htmlcov/

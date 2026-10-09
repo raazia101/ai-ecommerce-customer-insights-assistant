@@ -190,14 +190,11 @@ class ConversationService:
                 message=resolved_message,
                 session=session,
             )
-        except Exception as exc:
+        except Exception:
             result = ConversationResult(
-                response=(
-                    "ERROR: " + str(exc) + " | "
-                    "underlying service encountered an error."
-                ),
+                response="The assistant service encountered an internal error. Please try again.",
                 status="tool_error",
-            )
+                )
 
         self.sessions.add_turn(
             session_id=session_id,

@@ -9,3 +9,7 @@ __pycache__
 06_ml/artifacts/*.tmp
 data/raw
 data/staging
+
+07_llm_rag/artifacts/vector_store
+htmlcov
+.coverage

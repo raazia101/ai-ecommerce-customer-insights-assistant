@@ -1,0 +1,92 @@
+services:
+
+  postgres:
+    image: postgres:16
+    container_name: intern-capstone-postgres
+    environment:
+      POSTGRES_DB: intern_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres_dev_password
+    ports:
+      - "5433:5432"
+    volumes:
+      - capstone_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d intern_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  mongodb:
+    image: mongo:7
+    container_name: intern-capstone-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - capstone_mongo_data:/data/db
+    healthcheck:
+      test: ["CMD-SHELL", "mongosh --quiet --eval \"db.adminCommand('ping').ok\""]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.capstone
+    container_name: intern-capstone-api
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: intern_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres_dev_password
+      OLLAMA_BASE_URL: http://ollama:11434/v1
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./07_llm_rag/artifacts/vector_store:/app/07_llm_rag/artifacts/vector_store
+      - ./data/curated:/app/data/curated:ro
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mongodb:
+        condition: service_healthy
+      ollama:
+        condition: service_started
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8000/health')\""
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  ui:
+    build:
+      context: .
+      dockerfile: 09_capstone/ui/Dockerfile
+    container_name: intern-capstone-ui
+    environment:
+      API_URL: http://api:8000
+    ports:
+      - "8501:8501"
+    depends_on:
+      api:
+        condition: service_healthy
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: intern-capstone-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - capstone_ollama_data:/root/.ollama
+
+volumes:
+  capstone_postgres_data:
+  capstone_mongo_data:
+  capstone_ollama_data:

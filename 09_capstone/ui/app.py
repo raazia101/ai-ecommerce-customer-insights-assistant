@@ -8,7 +8,7 @@ The UI communicates with the Week 10 FastAPI backend.
 from __future__ import annotations
 
 import uuid
-
+import os 
 import requests
 import streamlit as st
 
@@ -17,7 +17,7 @@ import streamlit as st
 # Configuration
 # ---------------------------------------------------------------------------
 
-API_URL = "http://127.0.0.1:8000"
+API_URL = os.getenv("API_URL", "http://127.0.0.1:8000")
 
 
 # ---------------------------------------------------------------------------
@@ -26,7 +26,7 @@ API_URL = "http://127.0.0.1:8000"
 
 st.set_page_config(
     page_title="E-commerce Customer Insights Assistant",
-    page_icon="ðŸ¤–",
+    page_icon="🤖",
     layout="wide",
 )
 
@@ -126,14 +126,14 @@ for i, message in enumerate(st.session_state.messages):
 
             with feedback_col1:
                 if st.button(
-                    "ðŸ‘",
+                    "👍",
                     key=f"positive_{i}",
                 ):
                     st.toast("Thanks for the feedback!")
 
             with feedback_col2:
                 if st.button(
-                    "ðŸ‘Ž",
+                    "👎",
                     key=f"negative_{i}",
                 ):
                     st.toast("Thanks for the feedback!")
@@ -222,23 +222,7 @@ if user_message:
                 # Feedback
                 # -------------------------------------------------------
 
-                feedback_col1, feedback_col2, _ = st.columns(
-                    [1, 1, 8]
-                )
-
-                with feedback_col1:
-                    if st.button(
-                        "ðŸ‘",
-                        key=f"positive_{len(st.session_state.messages)}",
-                    ):
-                        st.toast("Thanks for the feedback!")
-
-                with feedback_col2:
-                    if st.button(
-                        "ðŸ‘Ž",
-                        key=f"negative_{len(st.session_state.messages)}",
-                    ):
-                        st.toast("Thanks for the feedback!")
+                
 
             except requests.RequestException as exc:
                 error_message = (

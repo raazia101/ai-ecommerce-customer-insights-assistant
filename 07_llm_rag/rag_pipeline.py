@@ -1,5 +1,6 @@
 from pathlib import Path
 import json
+import os
 import re
 
 import chromadb
@@ -73,7 +74,10 @@ print(f"Stored chunks: {collection.count()}")
 print(f"Connecting to local LLM: {LLM_MODEL}")
 
 llm_client = OpenAI(
-    base_url="http://localhost:11434/v1",
+    base_url=os.getenv(
+	"OLLAMA_BASE_URL",
+	"http://localhost:11434/v1",
+),
     api_key="ollama",
 )
 
