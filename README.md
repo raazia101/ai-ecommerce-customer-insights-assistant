@@ -43,6 +43,7 @@ The application also enforces bounded tool usage and prevents unsupported or des
 ### Business KPI Analysis
 
 ![Business KPI Response](docs/images/kpi-response.png)
+
 # 🏗️ System Architecture
 
 ```text
