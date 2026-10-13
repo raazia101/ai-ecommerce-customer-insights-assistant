@@ -38,11 +38,11 @@ The application also enforces bounded tool usage and prevents unsupported or des
 
 ### Streamlit Assistant
 
-![AI E-Commerce Customer Insights Assistant](docs/images/assistant-ui.png)
+![AI E-Commerce Customer Insights Assistant](./docs/images/assistant-ui.png)
 
 ### Business KPI Analysis
 
-![Business KPI Response](docs/images/kpi-response.png)
+![Business KPI Response](./docs/images/kpi-response.png)
 
 # 🏗️ System Architecture
 
