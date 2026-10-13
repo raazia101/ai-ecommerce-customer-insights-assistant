@@ -546,4 +546,3 @@ Production Deployment
 
 The result is an end-to-end AI application capable of combining structured business data, machine learning, enterprise documentation, and controlled AI reasoning into a single customer-insights platform.
 
-the README look like a **finished internship deliverable**, not a setup note. The architecture diagram + capabilities + evaluation + 12-week progression are particularly useful for that.
