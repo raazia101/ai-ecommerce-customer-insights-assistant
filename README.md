@@ -1,4 +1,4 @@
-# Intern Project
+# AI E-Commerce Customer Insights Assistant Project
 
 ## Overview
 
