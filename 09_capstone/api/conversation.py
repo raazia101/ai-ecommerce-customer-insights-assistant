@@ -233,7 +233,7 @@ class ConversationService:
         ):
             return ConversationResult(
                 response=(
-                    "Sure â€” which order ID would you like me to check? "
+                    "Sure - which order ID would you like me to check? "
                     "For example, ORD-00001."
                 ),
                 status="clarification",

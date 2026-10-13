@@ -346,7 +346,6 @@ def understand_request(
 # KPI detection
 # ============================================================
 
-
 def _detect_kpi(
     question: str,
 ) -> str | None:
@@ -357,6 +356,34 @@ def _detect_kpi(
     question = question.lower()
 
     kpi_patterns = {
+        "kpi_summary": [
+            "key business kpis",
+            "key business kpi",
+            "business kpis",
+            "business kpi",
+            "key kpis",
+            "key performance indicators",
+            "important kpis",
+            "important business metrics",
+        ],
+        "top_product_revenue": [
+            "products generate the most revenue",
+            "products generate most revenue",
+            "products with the most revenue",
+            "top products by revenue",
+            "highest product revenue",
+            "top product revenue",
+            "products make the most revenue",
+        ],
+        "top_selling_products": [
+            "top selling products",
+            "top-selling products",
+            "top selling product",
+            "best selling products",
+            "best-selling products",
+            "most sold products",
+            "products sell the most",
+        ],
         "payment_success_rate": [
             "payment success rate",
             "payment success",
@@ -365,6 +392,7 @@ def _detect_kpi(
         "completed_revenue": [
             "completed revenue",
             "total completed revenue",
+            "total revenue",
             "revenue",
         ],
         "average_order_value": [
@@ -374,22 +402,43 @@ def _detect_kpi(
         ],
         "repeat_purchase_rate": [
             "repeat purchase rate",
+            "repeat-purchase rate",
+            "customer repeat-purchase rate",
+            "customer repeat purchase rate",
             "repeat purchase",
             "repeat customers",
+            "repeat-purchase",
         ],
         "customer_value": [
             "customer value",
             "customer lifetime value",
             "customer value metric",
         ],
+        "total_orders": [
+            "total orders",
+            "number of orders",
+            "how many orders",
+            "how many orders do we have",
+            "orders do we have",
+        ],
+        "total_customers": [
+            "total customers",
+            "number of customers",
+            "how many customers",
+            "how many customers do we have",
+            "customers do we have",
+        ],
     }
 
     for kpi_name, patterns in kpi_patterns.items():
-        for pattern in patterns:
-            if pattern in question:
-                return kpi_name
+        if any(pattern in question for pattern in patterns):
+            return kpi_name
 
     return None
+
+
+
+
 
 
 # ============================================================
@@ -958,7 +1007,7 @@ def synthesize_response(
 
         else:
             state.final_answer = (
-                "Iâ€™m sorry, but I could not safely "
+                "I'm sorry, but I could not safely "
                 "process that request."
             )
 
@@ -1126,6 +1175,114 @@ def synthesize_response(
                 "kpi_name",
                 "KPI",
             ),
+        )
+
+        value = result.get("value")
+        unit = result.get("unit")
+
+        if value is None:
+            state.final_answer = (
+                f"The {kpi_name} was calculated, "
+                "but no KPI value was returned."
+            )
+            return
+        if kpi_name == "kpi_summary":
+            state.final_answer = (
+                "Key business KPIs:\n"
+                f"- Total orders: {int(value['total_orders'])}\n"
+                f"- Total customers: {int(value['total_customers'])}\n"
+                f"- Completed revenue: "
+                f"{float(value['completed_revenue']):,.2f} AED\n"
+                f"- Average order value: "
+                f"{float(value['average_order_value']):,.2f} AED\n"
+                f"- Payment success rate: "
+                f"{float(value['payment_success_rate']):.2f}%\n"
+                f"- Repeat-purchase rate: "
+                f"{float(value['repeat_purchase_rate']):.2f}%\n"
+                f"- Customer value: "
+                f"{float(value['customer_value']):,.2f} AED"
+            )
+            return
+
+        # ----------------------------------------------------
+        # Product rankings
+        # ----------------------------------------------------
+
+        if kpi_name == "top_selling_products":
+            lines = ["Top-selling products:"]
+
+            for index, product in enumerate(
+                value,
+                start=1,
+            ):
+                lines.append(
+                    f"{index}. "
+                    f"{product['product_name']} — "
+                    f"{product['units_sold']} units"
+                )
+
+            state.final_answer = "\n".join(lines)
+            return
+
+        if kpi_name == "top_product_revenue":
+            lines = ["Top products by revenue:"]
+
+            for index, product in enumerate(
+                value,
+                start=1,
+            ):
+                lines.append(
+                    f"{index}. "
+                    f"{product['product_name']} — "
+                    f"{product['revenue']:,.2f} AED"
+                )
+
+            state.final_answer = "\n".join(lines)
+            return
+
+        # ----------------------------------------------------
+        # Scalar KPIs
+        # ----------------------------------------------------
+
+        if kpi_name in {
+            "completed_revenue",
+            "average_order_value",
+            "customer_value",
+        }:
+            formatted_value = f"{float(value):,.2f}"
+            state.final_answer = (
+                f"The {kpi_name.replace('_', ' ')} is "
+                f"{formatted_value} AED."
+            )
+            return
+
+        if kpi_name in {
+            "payment_success_rate",
+            "repeat_purchase_rate",
+        }:
+            state.final_answer = (
+                f"The {kpi_name.replace('_', ' ')} is "
+                f"{float(value):.2f}%."
+            )
+            return
+
+        if kpi_name == "total_orders":
+            state.final_answer = (
+                f"The total number of orders is "
+                f"{int(value)}."
+            )
+            return
+
+        if kpi_name == "total_customers":
+            state.final_answer = (
+                f"The total number of customers is "
+                f"{int(value)}."
+            )
+            return
+
+        state.final_answer = (
+            f"The {kpi_name.replace('_', ' ')} is "
+            f"{value}."
         )
 
         value = result.get(

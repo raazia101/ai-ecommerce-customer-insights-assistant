@@ -238,6 +238,11 @@ APPROVED_KPIS = {
     "average_order_value": "average_order_value",
     "repeat_purchase_rate": "repeat_purchase_rate_pct",
     "customer_value": "customer_value",
+    "total_orders": "total_orders",
+    "total_customers": "total_customers",
+    "top_selling_products": "top_selling_products",
+    "top_product_revenue": "top_product_revenue",
+    "kpi_summary": "kpi_summary",
 }
 
 
@@ -291,8 +296,19 @@ def kpi_query(kpi_name: str) -> dict[str, Any]:
     transactions = kpis_module.load_transactions(PROJECT_ROOT)
     all_kpis = kpis_module.calculate_all_kpis(transactions)
 
-    result_key = APPROVED_KPIS[kpi_name]
-    value = all_kpis[result_key]
+    if kpi_name == "kpi_summary":
+        value = {
+            "total_orders": all_kpis["total_orders"],
+            "total_customers": all_kpis["total_customers"],
+            "completed_revenue": all_kpis["completed_revenue"],
+            "average_order_value": all_kpis["average_order_value"],
+            "payment_success_rate": all_kpis["payment_success_rate_pct"],
+            "repeat_purchase_rate": all_kpis["repeat_purchase_rate_pct"],
+            "customer_value": all_kpis["customer_value"],
+        }
+    else:
+        result_key = APPROVED_KPIS[kpi_name]
+        value = all_kpis[result_key]
 
     if hasattr(value, "item"):
         value = value.item()
@@ -305,9 +321,16 @@ def kpi_query(kpi_name: str) -> dict[str, Any]:
         "unit": (
             "percentage"
             if kpi_name.endswith("rate")
-            else "AED"
+            else (
+                "AED"
+                if kpi_name in {
+                    "completed_revenue",
+                    "average_order_value",
+                    "customer_value",
+                    }
+                    else None
+            )
         ),
-        "source": "05_analytics/kpis.py",
     }
 
 

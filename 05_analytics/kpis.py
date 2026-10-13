@@ -159,6 +159,8 @@ def calculate_all_kpis(
     """
     Calculate all Week 4 KPIs.
     """
+    project_root = Path(__file__).resolve().parent.parent
+
     return {
         "payment_success_rate_pct":
             calculate_payment_success_rate(transactions),
@@ -174,7 +176,133 @@ def calculate_all_kpis(
 
         "customer_value":
             calculate_customer_value(transactions),
+
+        "total_orders":
+            calculate_total_orders(transactions),
+
+        "total_customers":
+            calculate_total_customers(transactions),
+
+        "top_selling_products":
+            calculate_top_selling_products(project_root),
+
+        "top_product_revenue":
+            calculate_top_product_revenue(project_root),
     }
+
+def calculate_total_orders(
+    transactions: pd.DataFrame,
+) -> int:
+    """
+    Calculate the total number of unique orders.
+    """
+    return int(transactions["order_id"].nunique())
+
+
+def calculate_total_customers(
+    transactions: pd.DataFrame,
+) -> int:
+    """
+    Calculate the total number of unique customers.
+    """
+    return int(transactions["customer_id"].nunique())
+
+
+def calculate_top_selling_products(
+    project_root: Path,
+    top_n: int = 5,
+) -> list[dict]:
+    """
+    Calculate the top-selling products by units sold.
+    """
+    curated_dir = project_root / "data" / "curated"
+
+    order_items = pd.read_parquet(
+        curated_dir / "order_items.parquet"
+    )
+
+    products = pd.read_parquet(
+        curated_dir / "products.parquet"
+    )
+
+    product_sales = (
+        order_items
+        .groupby("product_id", as_index=False)
+        .agg(
+            units_sold=("quantity", "sum")
+        )
+        .merge(
+            products[["product_id", "product_name"]],
+            on="product_id",
+            how="left",
+        )
+        .sort_values(
+            "units_sold",
+            ascending=False,
+        )
+        .head(top_n)
+    )
+
+    return [
+        {
+            "product_id": row["product_id"],
+            "product_name": row["product_name"],
+            "units_sold": int(row["units_sold"]),
+        }
+        for _, row in product_sales.iterrows()
+    ]
+
+
+def calculate_top_product_revenue(
+    project_root: Path,
+    top_n: int = 5,
+) -> list[dict]:
+    """
+    Calculate top products by order-item revenue.
+    """
+    curated_dir = project_root / "data" / "curated"
+
+    order_items = pd.read_parquet(
+        curated_dir / "order_items.parquet"
+    )
+
+    products = pd.read_parquet(
+        curated_dir / "products.parquet"
+    )
+
+    order_items = order_items.copy()
+
+    order_items["revenue"] = (
+        order_items["quantity"]
+        * order_items["unit_price"]
+    )
+
+    product_revenue = (
+        order_items
+        .groupby("product_id", as_index=False)
+        .agg(
+            revenue=("revenue", "sum")
+        )
+        .merge(
+            products[["product_id", "product_name"]],
+            on="product_id",
+            how="left",
+        )
+        .sort_values(
+            "revenue",
+            ascending=False,
+        )
+        .head(top_n)
+    )
+
+    return [
+        {
+            "product_id": row["product_id"],
+            "product_name": row["product_name"],
+            "revenue": round(float(row["revenue"]), 2),
+        }
+        for _, row in product_revenue.iterrows()
+    ]
 
 
 if __name__ == "__main__":
